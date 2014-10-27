@@ -19,6 +19,7 @@ import simcontrol.ogs.beans.Manager;
  * @author Eric
  */
 public class SiteManagerManager {
+
     public static Manager getRow(int ID) throws SQLException {
 
         String sql = "SELECT * FROM students WHERE ID = ?";

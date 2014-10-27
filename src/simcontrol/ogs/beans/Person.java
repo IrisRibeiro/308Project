@@ -12,19 +12,11 @@ package simcontrol.ogs.beans;
  */
 public class Person {
     private String name;
-    private int ID;
     private String userName;
     private String password;
     private String emailAddress;
     private int accessLevel;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    private int ID;
 
     public int getID() {
         return ID;
@@ -32,6 +24,14 @@ public class Person {
 
     public void setID(int ID) {
         this.ID = ID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getUserName() {
