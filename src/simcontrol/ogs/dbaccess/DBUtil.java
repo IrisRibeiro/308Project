@@ -1,4 +1,4 @@
-package simcontol.ogs.dbaccess;
+package simcontrol.ogs.dbaccess;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

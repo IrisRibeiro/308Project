@@ -10,8 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import simcontol.ogs.dbaccess.DBType;
-import simcontol.ogs.dbaccess.DBUtil;
+import simcontrol.ogs.dbaccess.DBType;
+import simcontrol.ogs.dbaccess.DBUtil;
 import simcontrol.ogs.beans.Manager;
 
 /**
