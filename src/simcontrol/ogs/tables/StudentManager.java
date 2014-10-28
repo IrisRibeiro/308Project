@@ -10,10 +10,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import simcontrol.ogs.beans.Student;
 import simcontrol.ogs.dbaccess.DBType;
 import simcontrol.ogs.dbaccess.DBUtil;
-
-import simcontrol.ogs.beans.Student;
 
 /**
  *
@@ -58,7 +57,8 @@ public class StudentManager {
 
     public static boolean insert(Student studentBean) throws Exception {
 
-        String sql = "INSERT into admin (name, userName, password, EmailAddress, AccessLevel) "
+        String sql = "INSERT into students"
+                + " (name, userName, password, EmailAddress, AccessLevel) "
                 + "VALUES (?, ?, ?, ?, ?)";
         ResultSet keys = null;
         try (
@@ -98,7 +98,7 @@ public class StudentManager {
         String sql
                 = "UPDATE students SET " + "name = ?, "
                 + "userName = ?, password = ?, " + "EmailAddress = ?,"
-                + "accessLevel = ? WHERE adminId = ?";
+                + "accessLevel = ? WHERE ID = ?";
         try (
                 Connection conn = DBUtil.getConnection(DBType.MYSQL);
                 PreparedStatement stmt = conn.prepareStatement(sql);) {

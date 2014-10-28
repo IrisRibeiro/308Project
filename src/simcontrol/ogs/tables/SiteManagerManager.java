@@ -22,7 +22,7 @@ public class SiteManagerManager {
 
     public static Manager getRow(int ID) throws SQLException {
 
-        String sql = "SELECT * FROM students WHERE ID = ?";
+        String sql = "SELECT * FROM SiteManager WHERE ID = ?";
         ResultSet rs = null;
 
         try (
@@ -57,7 +57,8 @@ public class SiteManagerManager {
 
     public static boolean insert(Manager managerBean) throws Exception {
 
-        String sql = "INSERT into admin (name, userName, password, EmailAddress, AccessLevel) "
+        String sql = "INSERT into SiteManager"
+                + " (name, userName, password, EmailAddress, AccessLevel) "
                 + "VALUES (?, ?, ?, ?, ?)";
         ResultSet keys = null;
         try (
@@ -95,9 +96,9 @@ public class SiteManagerManager {
     public static boolean update(Manager managerBean) throws Exception {
 
         String sql
-                = "UPDATE students SET " + "name = ?, "
+                = "UPDATE SiteManager SET " + "name = ?, "
                 + "userName = ?, password = ?, " + "EmailAddress = ?,"
-                + "accessLevel = ? WHERE adminId = ?";
+                + "accessLevel = ? WHERE ID = ?";
         try (
                 Connection conn = DBUtil.getConnection(DBType.MYSQL);
                 PreparedStatement stmt = conn.prepareStatement(sql);) {
