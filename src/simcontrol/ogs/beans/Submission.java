@@ -16,6 +16,7 @@ public class Submission implements Serializable{
     private int studentID;
     private int assignmentID;
     private int graderID;
+    private int submissionID;
     private double grade;
     private String comments;
     private String path;
@@ -44,6 +45,14 @@ public class Submission implements Serializable{
 
     public void setGraderID(int graderID) {
         this.graderID = graderID;
+    }
+    
+    public int getSubmissionID() {
+        return submissionID;
+    }
+
+    public void setSubmissionID(int submissionID) {
+        this.submissionID = submissionID;
     }
 
     public double getGrade() {
