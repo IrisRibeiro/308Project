@@ -10,7 +10,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import simcontrol.ogs.beans.Student;
+import simcontrol.ogs.beans.Submission;
 import simcontrol.ogs.dbaccess.DBType;
 import simcontrol.ogs.dbaccess.DBUtil;
 
@@ -130,10 +133,14 @@ public class StudentManager {
      *
      * @returns a grade which is a string
      */
-    public String checkGrade() {
-        String grade = "";
-        
-        return grade;
+    public static Double checkGrade(int assignmentID, int studentID) {
+        try {
+            Submission sbean = SubmissionManager.getRow(studentID, assignmentID);
+            return sbean.getGrade();
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+        return 0.0;
     }
 
     /**
