@@ -10,9 +10,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import simcontrol.ogs.beans.TA;
 import simcontrol.ogs.dbaccess.DBType;
 import simcontrol.ogs.dbaccess.DBUtil;
-import simcontrol.ogs.beans.TA;
 
 /**
  *
@@ -22,7 +22,7 @@ public class TAManager {
     
     public static TA getRow(int ID) throws SQLException {
 
-        String sql = "SELECT * FROM students WHERE ID = ?";
+        String sql = "SELECT * FROM TA WHERE ID = ?";
         ResultSet rs = null;
 
         try (
@@ -57,7 +57,8 @@ public class TAManager {
 
     public static boolean insert(TA TABean) throws Exception {
 
-        String sql = "INSERT into admin (name, userName, password, EmailAddress, AccessLevel) "
+        String sql = "INSERT into TA"
+                + " (name, userName, password, EmailAddress, AccessLevel) "
                 + "VALUES (?, ?, ?, ?, ?)";
         ResultSet keys = null;
         try (
@@ -95,9 +96,9 @@ public class TAManager {
     public static boolean update(TA TABean) throws Exception {
 
         String sql
-                = "UPDATE students SET " + "name = ?, "
+                = "UPDATE TA SET " + "name = ?, "
                 + "userName = ?, password = ?, " + "EmailAddress = ?,"
-                + "accessLevel = ? WHERE adminId = ?";
+                + "accessLevel = ? WHERE ID = ?";
         try (
                 Connection conn = DBUtil.getConnection(DBType.MYSQL);
                 PreparedStatement stmt = conn.prepareStatement(sql);) {

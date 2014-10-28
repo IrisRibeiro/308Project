@@ -10,9 +10,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import simcontrol.ogs.beans.Professor;
 import simcontrol.ogs.dbaccess.DBType;
 import simcontrol.ogs.dbaccess.DBUtil;
-import simcontrol.ogs.beans.Professor;
 
 /**
  *

@@ -21,7 +21,7 @@ import simcontrol.ogs.dbaccess.DBUtil;
 public class AssignmentManager {
     public static Assignment getRow(int ID) throws SQLException {
 
-        String sql = "SELECT * FROM students WHERE ID = ?";
+        String sql = "SELECT * FROM Assignment WHERE ID = ?";
         ResultSet rs = null;
 
         try (
@@ -33,11 +33,13 @@ public class AssignmentManager {
             if (rs.next()) {
                 Assignment assignmentBean = new Assignment();
                 assignmentBean.setName(rs.getString("name"));
+                assignmentBean.setSpecification(rs.getString("specification"));
+                assignmentBean.setDueDate(rs.getString("dueDate"));
+                assignmentBean.setInstructions(rs.getString("instructions"));
+                assignmentBean.setPath(rs.getString("path"));
+                assignmentBean.setCourseID(rs.getInt("courseID"));
+                assignmentBean.setPointsPossible(rs.getInt("pointsPossible"));
                 assignmentBean.setID(ID);
-                assignmentBean.setUserName(rs.getString("userName"));
-                assignmentBean.setPassword(rs.getString("password"));
-                assignmentBean.setEmailAddress(rs.getString("EmailAddress"));
-                assignmentBean.setAccessLevel(rs.getInt("AccessLevel"));
                 return assignmentBean;
             } else {
                 return null;
@@ -56,18 +58,23 @@ public class AssignmentManager {
 
     public static boolean insert(Assignment assignmentBean) throws Exception {
 
-        String sql = "INSERT into admin (name, userName, password, EmailAddress, AccessLevel) "
-                + "VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT into Assignment"
+                + " (name, specification, dueDate, instructions, path, "
+                + "courseID, pointsPossible, ID) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         ResultSet keys = null;
         try (
                 Connection conn = DBUtil.getConnection(DBType.MYSQL);
                 PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);) {
 
             stmt.setString(1, assignmentBean.getName());
-            stmt.setString(2, assignmentBean.getUserName());
-            stmt.setString(3, assignmentBean.getPassword());
-            stmt.setString(4, assignmentBean.getEmailAddress());
-            stmt.setInt(5, assignmentBean.getAccessLevel());
+            stmt.setString(2, assignmentBean.getSpecification());
+            stmt.setString(3, assignmentBean.getDueDate());
+            stmt.setString(4, assignmentBean.getInstructions());
+            stmt.setString(5, assignmentBean.getPath());
+            stmt.setInt(6, assignmentBean.getCourseID());
+            stmt.setInt(7, assignmentBean.getPointsPossible());
+            stmt.setInt(8, assignmentBean.getID());
             int affected = stmt.executeUpdate();
 
             if (affected == 1) {
@@ -94,19 +101,21 @@ public class AssignmentManager {
     public static boolean update(Assignment assignmentBean) throws Exception {
 
         String sql
-                = "UPDATE students SET " + "name = ?, "
-                + "userName = ?, password = ?, " + "EmailAddress = ?,"
-                + "accessLevel = ? WHERE adminId = ?";
+                = "UPDATE Assignment SET " + "name = ?, specification = ?, "
+                + "dueDate = ?, instructions = ?, " + "path = ?, "
+                + "courseID = ?, pointsPossible = ? WHERE ID = ?";
         try (
                 Connection conn = DBUtil.getConnection(DBType.MYSQL);
                 PreparedStatement stmt = conn.prepareStatement(sql);) {
 
             stmt.setString(1, assignmentBean.getName());
-            stmt.setString(2, assignmentBean.getUserName());
-            stmt.setString(3, assignmentBean.getPassword());
-            stmt.setString(4, assignmentBean.getEmailAddress());
-            stmt.setInt(5, assignmentBean.getAccessLevel());
-            stmt.setInt(6, assignmentBean.getID());
+            stmt.setString(2, assignmentBean.getSpecification());
+            stmt.setString(3, assignmentBean.getDueDate());
+            stmt.setString(4, assignmentBean.getInstructions());
+            stmt.setString(5, assignmentBean.getPath());
+            stmt.setInt(6, assignmentBean.getCourseID());
+            stmt.setInt(7, assignmentBean.getPointsPossible());
+            stmt.setInt(8, assignmentBean.getID());
 
             int affected = stmt.executeUpdate();
             if (affected == 1) {
