@@ -80,7 +80,7 @@ public class SubmissionManager {
                 keys = stmt.getGeneratedKeys();
                 keys.next();
                 int newKey = keys.getInt(1);
-                submissionBean.setAssignmentID(newKey);
+                submissionBean.setSubmissionID(newKey);
             } else {
                 System.err.println("No rows affected");
                 return false;

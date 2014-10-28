@@ -8,7 +8,7 @@ public class DBUtil {
 
 	private static final String USERNAME = "dbuser";
 	private static final String PASSWORD = "dbpassword";
-	private static final String M_CONN_STRING =
+	private static final String M_CONN_STRING = 
 			"jdbc:mysql://localhost/simcontrol";
 
 	public static Connection getConnection(DBType dbType) throws SQLException {
