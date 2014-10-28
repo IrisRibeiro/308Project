@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package simcontrol.ogs.tables;
 
 import java.sql.Connection;
@@ -10,8 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import simcontrol.ogs.beans.Student;
 import simcontrol.ogs.beans.Submission;
 import simcontrol.ogs.dbaccess.DBType;
@@ -131,7 +124,7 @@ public class StudentManager {
      * Check Grade Method allows a student or ta to chekc theri grade for an
      * assinment
      *
-     * @returns a grade which is a string
+     * @returns a grade which is a double
      */
     public static Double checkGrade(int assignmentID, int studentID) {
         try {
@@ -146,8 +139,8 @@ public class StudentManager {
     /**
      * Submit Assingment
      */
-    public void sumbmitAssingment() {
-
+    public void sumbmitAssignment() {
+        
     }
 
     /**
